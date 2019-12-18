@@ -10,6 +10,13 @@
 
   <body>
     <%= render 'layouts/navigation' %>
+    <% flash.each do |message_type, message| %>
+      <%= javascript_tag "M.toast({html: '#{message}', classes:'green'},4000)" if message_type == 'notice' %>
+      <%= javascript_tag "M.toast({html: '#{message}', classes:'red'},4000)" if message_type == 'alert' %>
+    <% end %>
+    <%= render 'layouts/signupmodal' %>
+    <%= render 'layouts/loginmodal' %>
+    <%= render 'layouts/editaccount' %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,40 @@
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4 class="center">Sign Up</h4>
+    <div class="row">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+      
+        <div class="input-field">
+          <i class="material-icons prefix">email</i>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <label for="autocomplete-input">Email</label>
+        </div>
+
+        <div class="input-field">
+          <i class="material-icons prefix">vpn_key</i>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password" %>
+          <label for="autocomplete-input">Password</label>
+        </div>
+
+        <div class="input-field">
+          <i class="material-icons prefix">vpn_key</i>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <label for="autocomplete-input">Password Confirmation</label>
+        </div>
+      
+        <div class="modal-footer">
+          <%=  f.submit "Sign up",:class => 'btn is-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+

@@ -4,63 +4,26 @@
   <li><a href="#modal2" class="modal-trigger">Login</a></li>
   <li><a href="#!"><i class="material-icons">local_phone</i></a></li>
 </ul>
+
+<ul id="dropdown2" class="dropdown-content">
+  <% if current_user %>
+    <li><a href="#modal3" class="modal-trigger">Edit account</a></li>
+  <% end %>
+  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %></li>
+  <li><a href="#!"><i class="material-icons">local_phone</i></a></li>
+</ul>
+
 <nav>
   <div class="nav-wrapper p-2">
-    <a href="#!" class="brand-logo">Authors Haven</a>
+    <%= link_to "Authors Haven", root_path, :class => "brand-logo" %>
     <ul class="right hide-on-med-and-down">
       <!-- Dropdown Trigger -->
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Get Started<i class="material-icons right">arrow_drop_down</i></a></li>
+      <% if current_user %>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><%= user_name %><i class="material-icons right">account_circle</i></a></li>
+      <% else %>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Get Started<i class="material-icons right">arrow_drop_down</i></a></li>
+      <% end %>
     </ul>
   </div>
 </nav>
 
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-  <h4>Sign Up</h4>
-  <div class="row">
-      <div class="input-field col s10">
-        <i class="material-icons prefix">email</i>
-        <input type="email" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Email</label>
-      </div>
-      <div class="input-field col s10">
-        <i class="material-icons prefix">vpn_key</i>
-        <input type="password" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Password</label>
-      </div>
-      <div class="input-field col s10">
-      <i class="material-icons prefix">vpn_key</i>
-      <input type="password" id="autocomplete-input" class="autocomplete">
-      <label for="autocomplete-input">Password Confirmation</label>
-    </div>
-</div>
-  </div>
-  <div class="modal-footer">
-  <button class="btn is-secondary" type="submit" name="action">SignUp</button>
-  </div>
-</div>
-
-
-<!-- Modal Structure -->
-<div id="modal2" class="modal">
-  <div class="modal-content">
-  <h4>Login</h4>
-  <div class="row">
-      <div class="input-field col s10">
-        <i class="material-icons prefix">email</i>
-        <input type="email" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Email</label>
-      </div>
-      <div class="input-field col s10">
-        <i class="material-icons prefix">vpn_key</i>
-        <input type="password" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">Password</label>
-      </div>
-</div>
-  </div>
-  <div class="modal-footer">
-  <button class="btn is-secondary" type="submit" name="action">Login</button>
-  </div>
-</div>
