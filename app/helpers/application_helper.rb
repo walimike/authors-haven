@@ -14,4 +14,8 @@ module ApplicationHelper
     def user_name
         current_user.email.rpartition('@').first
     end
+
+    def article_owner article
+        true if current_user.id == article.user_id
+    end
 end
