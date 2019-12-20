@@ -10,7 +10,6 @@
       <div class="col s8">
       <div class="col s12 m9">
     <h2 class="header">Recent articles</h2>
-
 <% @articles.each do |article| %>
   <div class="card horizontal">
       <div class="card-image waves-effect waves-block waves-light">
@@ -35,6 +34,7 @@
       </div>
   </div>
 <% end %>
+<%= will_paginate @articles, renderer: MaterializePagination::Rails %>
   </div>
      
       </div>
