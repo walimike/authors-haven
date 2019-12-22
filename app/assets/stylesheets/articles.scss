@@ -2,7 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.profile-section{
-    background-color: blue;
-    height: auto;
+
+.profilecard {
+  background-color: #f4f4f4;
+  width: 90%;
+  box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.7);
+}
+
+.profilecard-header {
+  overflow: hidden;
+  width: 100%;
+  max-height: 200px;
+}
+
+.profilecard-header img{
+  width: 100%;
+}
+
+.profilecard-content {
+  width: 85%;
+  margin: 35px auto;
+}
+
+.profilecard-content h3 {
+  font-size: 25px;
+  margin-bottom: 0;
+  color: #303F9F;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.profilecard-content h4 {
+  font-size: 14px;
+  margin-top: 0;
+  color: #FF5252;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.profilecard-content p {
+  color: #727272;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+  
+}
+
+.create-article{
+    margin-top: 115px;
+}
+
+.my-height{
+  height: 250px;
+}
+
+.main-content{
+  margin-top: 50px;
 }

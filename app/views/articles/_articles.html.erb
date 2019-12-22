@@ -1,0 +1,25 @@
+<% @articles.each do |article| %>
+  <div class="card horizontal">
+      <div class="card-image waves-effect waves-block waves-light my-height">
+        <%= image_tag("pexels-photo-414612.jpeg") %>
+      </div>
+      <div class="card-stacked my-height">
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4"><%= article.title %><i class="material-icons right">more_vert</i></span>
+          <span class=" grey-text text-darken-4">Written by <%= article.user.email %></span>
+        </div>
+        <div class="card-action">
+          <%= link_to 'Full Article', article %>
+          <% if current_user && article_owner(article) %>
+            <%= link_to 'Edit', edit_article_path(article) %>
+            <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Written by <%= article.user.email %><i class="material-icons right">close</i></span>
+        <p><%= article.body %></p>
+      </div>
+  </div>
+<% end %>
+<%= will_paginate @articles, renderer: MaterializePagination::Rails %>
