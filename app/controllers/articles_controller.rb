@@ -1,28 +1,21 @@
 class ArticlesController < ApplicationController
+  include ApplicationHelper
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
-  # GET /articles
-  # GET /articles.json
   def index
     @articles = Article.paginate(page: params[:page], per_page: 6).order('id DESC')
   end
 
-  # GET /articles/1
-  # GET /articles/1.json
   def show
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
 
-  # GET /articles/1/edit
   def edit
   end
 
-  # POST /articles
-  # POST /articles.json
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
@@ -38,8 +31,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
       if @article.update(article_params)
@@ -52,14 +43,27 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1
-  # DELETE /articles/1.json
   def destroy
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def like_article
+    unless current_user
+      flash[:alert] = "Please login to like article"
+    end
+    article = Article.find(params[:format].to_i)
+    liked_article = i_have_liked_article article.id
+    
+    if liked_article
+      liked_article.destroy
+    else
+      Like.create(article:article, user:current_user)
+    end
+    redirect_to articles_url
   end
 
   private

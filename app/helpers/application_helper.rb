@@ -18,4 +18,8 @@ module ApplicationHelper
     def article_owner article
         true if current_user.id == article.user_id
     end
+
+    def i_have_liked_article article_id
+        Like.find_by(user:current_user, article_id:article_id)
+    end
 end
