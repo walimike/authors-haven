@@ -66,6 +66,25 @@ class ArticlesController < ApplicationController
     redirect_to articles_url
   end
 
+  def bookmark_article
+    unless current_user
+      flash[:alert] = "Please login to bookmark article"
+    end
+    article = Article.find(params[:format].to_i)
+    bookmarked_article = i_have_bookmarked_article article.id
+    
+    if bookmarked_article
+      bookmarked_article.destroy
+    else
+      Bookmark.create(article:article, user:current_user)
+    end
+    redirect_to bookmarks_url
+  end
+
+  def get_bookmarks
+    @bookmarks = Bookmark.where(user:current_user)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
