@@ -23,7 +23,7 @@
               <i class="material-icons icon-red favorite" id="<%= article.id %>">bookmark_border</i>
             <% end %>
           <% end %>
-          <%= link_to like_article_path(article.id), method: :post do %>
+          <%= link_to article do %>
             <i class="material-icons icon-red">mode_comment</i>
           <% end %>
         </div>
