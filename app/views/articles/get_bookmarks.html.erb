@@ -1,5 +1,8 @@
-<% @articles.each do |article| %>
+<div class="row main-content">
+<div class="container">
+    <% @bookmarks.each do |bookmark| %>
   <div class="card horizontal">
+        <% article = bookmark.article %>
       <div class="card-image waves-effect waves-block waves-light my-height">
         <%= image_tag("pexels-photo-414612.jpeg") %>
       </div>
@@ -26,11 +29,14 @@
           <%= link_to like_article_path(article.id), method: :post do %>
             <i class="material-icons icon-red">mode_comment</i>
           <% end %>
+        
+          <i class="material-icons icon-red"></i>
+        
         </div>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">Written by <%= article.user.email %><i class="material-icons right">expand_more</i></span>
-        <p><%= article.article_summary %></p>
+        <p><%= article.body %></p>
         <div class="card-action">
           <%= link_to 'Full Article', article %>
           <% if current_user && article_owner(article) %>
@@ -41,4 +47,6 @@
       </div>
   </div>
 <% end %>
-<%= will_paginate @articles, renderer: MaterializePagination::Rails %>
+
+</div>
+</div>
