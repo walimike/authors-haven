@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191224140949) do
+ActiveRecord::Schema.define(version: 20191226102820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,15 +18,15 @@ ActiveRecord::Schema.define(version: 20191224140949) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "article_id"
+    t.bigint "user_id"
+    t.bigint "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_bookmarks_on_article_id"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20191224140949) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "article_id"
-    t.integer "user_id"
+    t.bigint "article_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_likes_on_article_id"
@@ -50,8 +50,14 @@ ActiveRecord::Schema.define(version: 20191224140949) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "articles", "users"
+  add_foreign_key "bookmarks", "articles"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "likes", "articles"
+  add_foreign_key "likes", "users"
 end

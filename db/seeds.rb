@@ -13,7 +13,8 @@ require 'faker'
     User.create(
     email: Faker::Internet.email,
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
+    username: Faker::Name.name 
     )
 end
 

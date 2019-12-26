@@ -1,10 +1,14 @@
-<div class="profilecard">
-  <div class="profilecard-header">
-    <%= image_tag("default.jpg") %>
+<div class="card grey lighten-5 z-depth-1">
+  <div>
+    <%= image_tag("default.jpg", class: "circle responsive-img")%>
+    <div class="card-title"><%= current_user.username %></div>
   </div>
-  <div class="profilecard-content">
-    <h3>Frank the Pug</h3>
-    <h4>The sexiest "Men (dog) in Black" </h4>
-    <p>And now you're back from outer space, / I just walked in to find you here with that sad look upon your face, / I should've changed that stupid lock, I should have made you leave your key, / If I'd have known for just one second you'd be back to bother me. / Go on, now go! Walk out the door...</p>
+  <div class="card-content">
+    <p>I am a very simple card. I am good at containing small bits of information.
+    I am convenient because I require little markup to use effectively.</p>
   </div>
+  <div class="card-action">
+    <a href="#modal3" class="modal-trigger"><i class="material-icons">edit</i></a>
 </div>
+</div>
+

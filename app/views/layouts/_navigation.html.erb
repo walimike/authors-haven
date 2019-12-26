@@ -19,7 +19,7 @@
     <ul class="right hide-on-med-and-down">
       <!-- Dropdown Trigger -->
       <% if current_user %>
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><%= user_name %><i class="material-icons right">account_circle</i></a></li>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><%= current_user.username %><i class="material-icons right">account_circle</i></a></li>
       <% else %>
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Get Started<i class="material-icons right">arrow_drop_down</i></a></li>
       <% end %>
