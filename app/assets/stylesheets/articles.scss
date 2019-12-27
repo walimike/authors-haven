@@ -60,3 +60,10 @@
 i.icon-red{
   color: red;
 }
+
+.collection .collection-item.avatar .secondary-content {
+  position: relative !important; 
+  top: unset !important; 
+  right: unset !important;
+  margin: -25px 0px 0px 25px !important;
+}

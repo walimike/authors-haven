@@ -26,31 +26,15 @@
   <%= @article.user.email %>
 </p>
 <% my_comments = current_comments(@article.id) %>
+<%= render(:partial => "comments", :locals => {:my_comments => my_comments})%>
 
-<%  my_comments.each do |comment| %>
-  <% my_comments.each do |comment| %>
-    <div class="card">
-    <p><% comment.body %><p>
+<%= form_with(url:"/comments", model: @comment, class: "input-field col s7") do |f| %>
+  <div class="input-field col s6">
+    <i class="material-icons prefix">mode_edit</i>
+    <%= f.text_field :body %>
+    <%= f.hidden_field :article_id, value: @article.id %>
+    <div class = "col s2">
+      <%= f.submit "comment", :class => 'btn is-secondary right' %>
     </div>
-  <% end %>
-  <div class="card horizontal">
-      <div class="card-image waves-effect waves-block waves-light my-height">
-        <%= image_tag("default.jpg") %>
-      </div>
-      <div class="card-stacked my-height">
-        <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4"><%= comment.body %><i class="material-icons right">expand_less</i></span>
-          <span class=" grey-text text-darken-4">Written by <%= comment.body %></span>
-        </div>
-      </div>
-      
   </div>
 <% end %>
-
-
-<%= form_with(url:"/comments", model: @comment, class: "input-field col s9") do |f| %>
-  <%= f.text_field :body %>
-  <%= f.hidden_field :article_id, value: @article.id %>
-  <%= f.submit "Create" %>
-<% end %>
-
