@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20191226102820) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "body"
+    t.bigint "article_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "article_id"
     t.bigint "user_id"
@@ -60,4 +70,6 @@ ActiveRecord::Schema.define(version: 20191226102820) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "likes", "articles"
   add_foreign_key "likes", "users"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
 end

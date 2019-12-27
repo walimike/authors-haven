@@ -19,11 +19,19 @@ module ApplicationHelper
         true if current_user.id == article.user_id
     end
 
+    def comment_owner comment
+        true if current_user.id == comment.user_id
+    end
+
     def i_have_liked_article article_id
         Like.find_by(user:current_user, article_id:article_id)
     end
 
     def i_have_bookmarked_article article_id
         Bookmark.find_by(user:current_user, article_id:article_id)
+    end
+
+    def current_comments article_id
+         Comment.where(article_id:article_id)
     end
 end

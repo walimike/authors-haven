@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   post 'like-article', to: 'articles#like_article'
   post 'bookmark-article', to: 'articles#bookmark_article'
   get 'bookmarks', to: 'articles#get_bookmarks'
+  post 'comments', to: 'comments#create_comment'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

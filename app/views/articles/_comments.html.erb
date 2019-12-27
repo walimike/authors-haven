@@ -1,0 +1,17 @@
+
+
+<%  my_comments.each do |comment| %>  
+<ul class="collection">
+  <li class="collection-item avatar">
+    <%= image_tag("default.jpg", :class => "circle") %>
+    <span class="title"><strong><%= comment.user.username %></strong></span>
+    <p><%= comment.body %></p>
+    <a href="#!" class="secondary-content"><i class="material-icons icon-red">favorite</i></a>
+    <% if current_user && comment_owner(comment) %>
+        <a href="#!" class="secondary-content"><i class="material-icons">edit</i></a>
+        <a href="#!" class="secondary-content"><i class="material-icons icon-red">delete</i></a>
+    <% end %>
+  </li>  
+</ul>
+<% end %>
+

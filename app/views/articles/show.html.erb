@@ -1,16 +1,40 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<div class="container">
+<p class="flow-text">
   <%= @article.title %>
 </p>
 
 <p>
-  <strong>Body:</strong>
   <%= @article.body %>
 </p>
 
+<%= link_to like_article_path(@article.id), method: :post do %>
+  <% if i_have_liked_article @article.id %>
+    <i class="material-icons icon-red favorite" id="<%= @article.id %>">favorite</i>
+  <% else %>
+    <i class="material-icons icon-red favorite" id="<%= @article.id %>">favorite_border</i>
+  <% end %>
+<% end %>
+<%= link_to bookmark_article_path(@article.id), method: :post do %>
+  <% if i_have_bookmarked_article @article.id %>
+      <i class="material-icons icon-red favorite" id="<%= @article.id %>">bookmark</i>
+    <% else %>
+      <i class="material-icons icon-red favorite" id="<%= @article.id %>">bookmark_border</i>
+    <% end %>
+  <% end %>
 <p>
-  <strong>User:</strong>
+  <strong>Written by</strong>
   <%= @article.user.email %>
 </p>
+<% my_comments = current_comments(@article.id) %>
+<%= render(:partial => "comments", :locals => {:my_comments => my_comments})%>
+
+<%= form_with(url:"/comments", model: @comment, class: "input-field col s7") do |f| %>
+  <div class="input-field col s6">
+    <i class="material-icons prefix">mode_edit</i>
+    <%= f.text_field :body %>
+    <%= f.hidden_field :article_id, value: @article.id %>
+    <div class = "col s2">
+      <%= f.submit "comment", :class => 'btn is-secondary right' %>
+    </div>
+  </div>
+<% end %>
