@@ -14,7 +14,7 @@ require 'faker'
     email: Faker::Internet.email,
     password: "password",
     password_confirmation: "password",
-    username: Faker::Name.name 
+    username: Faker::Name.middle_name
     )
 end
 
@@ -22,6 +22,14 @@ end
     Article.create(
         user_id: rand(1..10),
         title: Faker::Lorem.sentence(word_count: rand(1..3)),
-        body: Faker::Lorem.sentence(word_count: 50)
+        body: Faker::Lorem.paragraph_by_chars
+    )
+end
+
+100.times do
+    Comment.create(
+        user_id: rand(1..10),
+        body: Faker::Lorem.sentence(word_count: rand(3..20)),
+        article_id: rand(1..36)
     )
 end

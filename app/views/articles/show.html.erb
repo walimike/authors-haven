@@ -27,7 +27,7 @@
 </p>
 <% my_comments = current_comments(@article.id) %>
 <%= render(:partial => "comments", :locals => {:my_comments => my_comments})%>
-
+<% if current_user %>
 <%= form_with(url:"/comments", model: @comment, class: "input-field col s7") do |f| %>
   <div class="input-field col s6">
     <i class="material-icons prefix">mode_edit</i>
@@ -37,4 +37,5 @@
       <%= f.submit "comment", :class => 'btn is-secondary right' %>
     </div>
   </div>
+<% end %>
 <% end %>

@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
-        format.html { render :new }
+        format.html { redirect_to @article, alert: 'Article was not created.'}
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
