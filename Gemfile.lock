@@ -1,10 +1,10 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 5850932358c62f7622362eda4696cb6ea8eeed9d
+  revision: fd90b99e2a8249ff84a1b2528a09674d428e208f
   branch: master
   specs:
-    faker (2.9.0)
-      i18n (>= 1.6, < 1.8)
+    faker (2.13.0)
+      i18n (>= 1.6, < 2)
 
 GEM
   remote: https://rubygems.org/
@@ -71,7 +71,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.7)
     crass (1.0.5)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -84,7 +84,7 @@ GEM
     ffi (1.11.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    i18n (1.7.0)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
